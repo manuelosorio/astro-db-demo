@@ -1,18 +1,27 @@
 {
-  "name": "astro-db-demo",
-  "type": "module",
-  "version": "0.0.1",
   "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
+  "name": "astro-db-demo",
+  "type": "module",
+  "version": "0.0.1",
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/db": "^0.11.4",
     "astro": "^4.9.2",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.11.6",
+    "@edgio/connectors": "^7.11.6",
+    "@edgio/core": "^7.11.6",
+    "@edgio/prefetch": "^7.11.6"
   }
 }
