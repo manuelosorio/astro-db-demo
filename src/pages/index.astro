@@ -1,6 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+
+import { db, Message} from 'astro:db';
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const user = formData.get('user');
+  const message = formData.get('message');
+  if (typeof user === 'string' && typeof message === 'string') {
+    await db.insert(Message).values({ user, message });
+  }
+}
+
+
+const messages = await db.select().from(Message);
+
+
+
+
 ---
 
 <Layout title="Welcome to Astro.">
@@ -61,6 +79,22 @@ import Card from '../components/Card.astro';
 			/>
 		</ul>
 	</main>
+  <h1 style="color: white">Message</h1>
+  {
+    messages.map((message) => (
+      <div>
+        <em style="color: white">{message.user}</em>
+        <p style="color: white">{message.message}</p>
+      </div>
+    ))
+
+  }
+
+  <form method="post">
+    <input type="text" name="user" placeholder="User" />
+    <input type="text" name="message" placeholder="Message" />
+    <button type="submit">Send</button>
+  </form>
 </Layout>
 
 <style>

@@ -16,6 +16,7 @@ module.exports = {
   // routes: 'routes.js',
 
     astro: {
+    output: 'hybrid',
     // The path of the standalone server that runs Astro SSR
     // The dependencies for this file are automatically bundled
     // appPath: join('dist', 'server', 'entry.mjs')
